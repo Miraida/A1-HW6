@@ -10,7 +10,6 @@
         android:id="@+id/textF_imageView"
         android:layout_width="90dp"
         android:layout_height="90dp"
-        android:src="@drawable/user_profile_photo"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
