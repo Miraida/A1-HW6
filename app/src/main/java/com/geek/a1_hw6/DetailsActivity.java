@@ -1,8 +1,8 @@
 package com.geek.a1_hw6;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 
 public class DetailsActivity extends AppCompatActivity {
@@ -11,8 +11,14 @@ public class DetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
+        chekOrientation();
         checkGetIntent();
+    }
 
+    private void chekOrientation() {
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            finish();
+        }
     }
 
     private void checkGetIntent() {
@@ -23,9 +29,8 @@ public class DetailsActivity extends AppCompatActivity {
     }
 
     private void init() {
-       TextFragment textFragment = TextFragment.newInstance(model.getTitle(),model.getSubTitle(),model.getImage());
-        getSupportFragmentManager().beginTransaction()
-                .add(R.id.details_layout,textFragment)
-                .commit();
+       TextFragment textFragment = (TextFragment) getSupportFragmentManager().findFragmentById(R.id.text_fragment);
+        assert textFragment != null;
+        textFragment.setupViewsWith(model);
     }
 }

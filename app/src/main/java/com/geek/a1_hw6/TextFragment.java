@@ -51,7 +51,7 @@ public class TextFragment extends Fragment {
          if (mParam1!=null)setupViews();
         return view;
     }
-    public void setupViews(UserContactModel model){
+    public void setupViewsWith(UserContactModel model){
         txtTitle.setText(model.getTitle());
         txtSubTitle.setText(model.getSubTitle());
         imvPhoto.setImageResource(model.getImage());
